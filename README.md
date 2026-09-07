@@ -1,8 +1,8 @@
 # Employee Management System
 
-A Java-based Employee Management System that allows users to manage employee records through a simple menu-driven console application.
+A Java-based Employee Management System that allows users to manage employee records through a menu-driven console application.
 
-The application uses Java, JDBC, Maven, and MySQL to perform database operations.
+The application uses Java, JDBC, Maven, and MySQL to perform CRUD operations on employee data.
 
 ## 🚀 Features
 
@@ -17,7 +17,7 @@ The application uses Java, JDBC, Maven, and MySQL to perform database operations
 
 ## 🛠️ Technologies Used
 
-- Java
+- Java 17
 - JDBC
 - MySQL
 - Maven
@@ -33,13 +33,12 @@ EmployeeManagementSystem
 ├── src
 │   └── main
 │       └── java
-│           └── com
-│               └── employeemanagement
-│                   ├── Employee.java
-│                   ├── EmployeeApp.java
-│                   ├── EmployeeService.java
-│                   └── DBConnection.java
+│           └── com.employeemanagement
+│               ├── DBConnection.java
+│               ├── Employee.java
+│               ├── EmployeeApp.java
+│               └── EmployeeService.java
 │
+├── .gitignore
 ├── pom.xml
-├── README.md
-└── .gitignore
+└── README.md
