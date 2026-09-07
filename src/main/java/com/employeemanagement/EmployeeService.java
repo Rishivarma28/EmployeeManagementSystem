@@ -3,12 +3,8 @@ package com.employeemanagement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class EmployeeService {
-
-    private List<Employee> employees = new ArrayList<>();
 
     public void addEmployee(Employee employee) {
         String sql = "INSERT INTO employees (id, name, email, department, salary) VALUES (?, ?, ?, ?, ?)";
@@ -22,9 +18,13 @@ public class EmployeeService {
             statement.setString(4, employee.getDepartment());
             statement.setDouble(5, employee.getSalary());
 
-            statement.executeUpdate();
+            int rows = statement.executeUpdate();
 
-            System.out.println("Employee added to database successfully!");
+            if (rows > 0) {
+                System.out.println("Employee added to database successfully!");
+            } else {
+                System.out.println("Employee was not added.");
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -41,10 +41,13 @@ public class EmployeeService {
             statement.setDouble(1, salary);
             statement.setInt(2, id);
 
-            statement.executeUpdate();
+            int rows = statement.executeUpdate();
 
-            System.out.println("Employee updated successfully!");
-
+            if (rows > 0) {
+                System.out.println("Employee updated successfully!");
+            } else {
+                System.out.println("Employee ID not found.");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -59,9 +62,13 @@ public class EmployeeService {
 
             statement.setInt(1, id);
 
-            statement.executeUpdate();
+            int rows = statement.executeUpdate();
 
-            System.out.println("Employee deleted successfully!");
+            if (rows > 0) {
+                System.out.println("Employee deleted successfully!");
+            } else {
+                System.out.println("Employee ID not found.");
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
