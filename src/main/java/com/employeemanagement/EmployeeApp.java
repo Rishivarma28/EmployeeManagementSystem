@@ -17,7 +17,8 @@ public class EmployeeApp {
             System.out.println("2. Update Employee Salary");
             System.out.println("3. Display Employees");
             System.out.println("4. Delete Employee");
-            System.out.println("5. Exit");
+            System.out.println("5. Search Employee");
+            System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
@@ -75,6 +76,15 @@ public class EmployeeApp {
                     break;
 
                 case 5:
+                    scanner.nextLine();
+
+                    System.out.print("Enter name or department to search: ");
+                    String keyword = scanner.nextLine();
+
+                    service.searchEmployee(keyword);
+                    break;
+
+                case 6:
                     System.out.println("Thank you! Exiting...");
                     scanner.close();
                     return;

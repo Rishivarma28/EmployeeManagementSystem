@@ -2,6 +2,7 @@ package com.employeemanagement;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EmployeeService {
@@ -94,6 +95,46 @@ public class EmployeeService {
                 );
 
                 System.out.println(employee);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void searchEmployee(String keyword) {
+
+        String sql = "SELECT * FROM employees WHERE name LIKE ? OR department LIKE ?";
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            String searchKeyword = "%" + keyword + "%";
+
+            statement.setString(1, searchKeyword);
+            statement.setString(2, searchKeyword);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            boolean found = false;
+
+            while (resultSet.next()) {
+
+                found = true;
+
+                Employee employee = new Employee(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("email"),
+                        resultSet.getString("department"),
+                        resultSet.getDouble("salary")
+                );
+
+                System.out.println(employee);
+            }
+
+            if (!found) {
+                System.out.println("No employees found.");
             }
 
         } catch (SQLException e) {
