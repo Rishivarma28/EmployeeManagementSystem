@@ -15,6 +15,10 @@ The application uses Java, JDBC, Maven, and MySQL to perform CRUD operations on 
 - JDBC connectivity
 - Continuous menu until the user chooses Exit
 
+## 📸 Demo
+
+![Employee Management System Demo](employee-management-system-demo.png)
+
 ## 🛠️ Technologies Used
 
 - Java 17
